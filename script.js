@@ -15,8 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
   }, 2000);
 
-  // Update the URL to connect to the backend
-  const socket = io('*', {
+  const socket = io('http://localhost:5000', {
     transports: ['websocket'],
     reconnection: true,
     reconnectionAttempts: 5,
@@ -66,8 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       socket.emit('logout', username);
 
-      // Update the logout API call to use the backend URL
-      const response = await fetch('*', {
+      const response = await fetch('http://localhost:5000/api/logout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
